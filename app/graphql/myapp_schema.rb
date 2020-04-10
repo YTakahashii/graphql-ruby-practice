@@ -1,6 +1,6 @@
 class MyappSchema < GraphQL::Schema
   mutation(Types::MutationType)
-  query(Types::QueryType)
+  query(Queries)
 
   # Opt in to the new runtime (default in future graphql-ruby versions)
   use GraphQL::Execution::Interpreter
