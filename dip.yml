@@ -1,0 +1,19 @@
+version: '4.1'
+
+api: &api
+  service: api
+  compose:
+    method: exec
+
+interaction:
+  rails:
+    description: Rubyのコンテナでbundle exec rails XXX 例) dip rails g model
+    <<: *api
+    command: bundle exec rails
+    subcommands:
+          s:
+            description: Railsを起動
+            command: bundle exec rails s -b 0.0.0.0
+          c:
+            description: Rails Consoleを起動
+            command: bundle exec rails c
