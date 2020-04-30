@@ -3,6 +3,10 @@ class Queries::Posts::GetPostsAllQuery < GraphQL::Schema::Resolver
   type [Types::PostType], null: false
 
   def resolve
-    Post.all
+    posts_repository.find_all
+  end
+
+  def posts_repository
+    @posts_repository ||= PostsRepository.new
   end
 end

@@ -4,7 +4,10 @@ class Queries::Posts::GetPostByIdQuery < GraphQL::Schema::Resolver
   type Types::PostType, null: false
 
   def resolve(id:)
-    Post.find(id)
+    posts_repository.find_by(id: id)
   end
 
+  def posts_repository
+    @posts_repository ||= PostsRepository.new
+  end
 end
