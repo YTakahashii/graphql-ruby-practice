@@ -11,9 +11,17 @@ interaction:
     <<: *api
     command: bundle exec rails
     subcommands:
-          s:
-            description: Railsを起動
-            command: bundle exec rails s -b 0.0.0.0
-          c:
-            description: Rails Consoleを起動
-            command: bundle exec rails c
+      s:
+        description: Railsを起動
+        command: bundle exec rails s -b 0.0.0.0
+      c:
+        description: Rails Consoleを起動
+        command: bundle exec rails c
+  bash:
+    description: Railsのコンテナに入る
+    <<: *api
+    command: bash
+  rspec:
+    description: RSpecを実行
+    <<: *api
+    command: bundle exec rspec
