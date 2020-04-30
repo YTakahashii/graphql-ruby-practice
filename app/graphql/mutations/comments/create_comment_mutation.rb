@@ -9,11 +9,10 @@ class Mutations::Comments::CreateCommentMutation < Mutations::Base::BaseMutation
   argument :content, String, required: true
 
   def resolve(**args)
-    post = Post.find(args[:post_id])
-    comment = post.comments.build(content: args[:content])
-    comment.save
+    command.execute(post_id: args[:post_id], content: args[:content])
+  end
 
-    comment
+  def command
+    CreateCommentCommand.new
   end
 end
-

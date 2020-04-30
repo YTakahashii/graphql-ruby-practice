@@ -10,9 +10,10 @@ class Mutations::Posts::UpdatePostMutation < Mutations::Base::BaseMutation
   argument :description, String, required: false
 
   def resolve(**args)
-    post = Post.find(args[:id])
-    post.update(title: args[:title], description: args[:description])
+    command.execute(id: args[:id], title: args[:title], description: args[:description])
+  end
 
-    post
+  def command
+    UpdatePostCommand.new
   end
 end

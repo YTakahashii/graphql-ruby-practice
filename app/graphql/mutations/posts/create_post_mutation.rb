@@ -11,6 +11,11 @@ class Mutations::Posts::CreatePostMutation < Mutations::Base::BaseMutation
 
   # 実行内容
   def resolve(**args)
-    Post.create(title: args[:title], description: args[:description])
+    command.execute(title: args[:title], description: args[:description])
+  end
+
+  def command
+    CreatePostCommand.new
   end
 end
+

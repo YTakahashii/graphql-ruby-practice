@@ -8,9 +8,10 @@ class Mutations::Posts::DeletePostMutation < Mutations::Base::BaseMutation
   argument :id, ID, required: true
 
   def resolve(**args)
-    post = Post.find(args[:id])
-    post.destroy
+    command.execute(id: args[:id])
+  end
 
-    post
+  def command
+    DeletePostCommand.new
   end
 end
