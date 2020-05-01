@@ -4,6 +4,6 @@ class PostsRepository
   end
 
   def find_by(id:)
-    Post.find(id)
+    Post.find_by(id: id)
   end
 end
