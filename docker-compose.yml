@@ -20,7 +20,6 @@ services:
       - db
     stdin_open: true
     tty: true
-    command: bundle exec rails server -b 0.0.0.0
 volumes:
   mysql-data:
     driver: local
